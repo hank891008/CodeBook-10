@@ -5,22 +5,16 @@ typedef unsigned long long int ull;
 #define MOD 1000000007
 #define EPS 0.000000001
 using namespace std;
-
 #define SIZE 100000
-
 vector<int> G[SIZE];
 int N;
 bool visited[SIZE];
 int visited_order[SIZE], parent[SIZE], lowest[SIZE], number;
-
 void dfs(int cur, int pre_node) {
   visited_order[cur] = lowest[cur] = number;
   number++;
-
   visited[cur] = true;
-
   int next;
-
   for (int i = 0; i < G[cur].size(); i++) {
     next = G[cur][i];
     if (!visited[next]) {
@@ -32,17 +26,12 @@ void dfs(int cur, int pre_node) {
     }
   }
 }
-
 void art_points() {
   for (int i = 0; i < N; i++) visited[i] = false;
-
   number = 1;
   dfs(0, -1);
-
   int tmp_parent, root_num = 0;
-
   vector<int> V;
-
   for (int i = 1; i < N; i++) {
     tmp_parent = parent[i];
     if (tmp_parent == 0) {
@@ -56,12 +45,10 @@ void art_points() {
   }
   sort(V.begin(), V.end());
   V.erase(unique(V.begin(), V.end()), V.end());
-
   for (int i = 0; i < V.size(); i++) {
     printf("%d\n", V[i]);
   }
 }
-
 int main() {
   int E;
   scanf("%d %d", &N, &E);

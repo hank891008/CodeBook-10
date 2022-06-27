@@ -3,7 +3,6 @@ const int MAXN = ;
 int n;
 vector<int> G[MAXN];
 int vy[MAXN], my[MAXN];
-
 bool match(int u) {
   for (int v : G[u]) {
     if (vy[v]) {

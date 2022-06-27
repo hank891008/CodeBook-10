@@ -1,10 +1,8 @@
 // 0-base
 const int INF = 1e9;
 const int MAXN = ;
-
 int n;
 int a[MAXN], tr[MAXN << 1];
-
 // !!! remember to call this function
 void build() {
   for (int i = 0; i < n; i++) {

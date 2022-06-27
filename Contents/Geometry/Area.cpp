@@ -29,4 +29,3 @@ int io_convex(vector<Pt> convex, Pt q) {
 	}
 	return 1;      // inside
 }
-© 2022 GitHub, Inc.

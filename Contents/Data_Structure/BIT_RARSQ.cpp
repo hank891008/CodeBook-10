@@ -1,9 +1,7 @@
 // 1-base
 #define lowbit(k) (k & -k)
-
 int n;
 vector<int> B1, B2;
-
 void add(vector<int> &tr, int id, int val) {
   for (; id <= n; id += lowbit(id)) {
     tr[id] += val;

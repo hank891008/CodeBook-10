@@ -30,7 +30,6 @@
 #define MP make_pair
 #define all(x) x.begin(), x.end()
 #define maxn 50000+5
-  
 //structure
 struct Eular {
   vector<PII> adj[maxn];
@@ -38,7 +37,6 @@ struct Eular {
   vector<PII> path;
   int chk[maxn];
   int n;
-
   void init(int _n) {
     n = _n;
     for (int i = 0; i <= n; i++) adj[i].clear();
@@ -46,7 +44,6 @@ struct Eular {
     path.clear();
     memset(chk, 0, sizeof(chk));
   }
-
   void dfs(int v) {
     for (auto i : adj[v]) {
       if (edges[i.first] == true) {
@@ -56,21 +53,17 @@ struct Eular {
       }
     }
   }
-
   void add_Edge(int from, int to) {
     edges.PB(true);
-
     // for bi-directed graph
     adj[from].PB(MP(edges.size() - 1, to));
     adj[to].PB(MP(edges.size() - 1, from));
     chk[from]++;
     chk[to]++;
-
     // for directed graph
     // adj[from].PB(MP(edges.size()-1, to));
     // check[from]++;
   }
-
   bool eular_path() {
     int st = -1;
     for (int i = 1; i <= n; i++) {
@@ -85,7 +78,6 @@ struct Eular {
     dfs(st);
     return true;
   }
-
   void print_path(void) {
     for (auto i : path) {
       printf("%d %d\n", i.first, i.second);
@@ -105,15 +97,12 @@ int din[ALP], dout[ALP];
 int par[ALP];
 vector<string> vs[MXN], ans;
 bitset<MXN> vis, used[ALP];
-
 void djsInit() {
   for (int i = 0; i != ALP; ++i) {
     par[i] = i;
   }
 }
-
 int Find(int x) { return (x == par[x] ? (x) : (par[x] = Find(par[x]))); }
-
 void init() {
   djsInit();
   memset(din, 0, sizeof(din));
@@ -125,7 +114,6 @@ void init() {
   }
   return;
 }
-
 void dfs(int u) {
   for (int i = 0; i != (int)vs[u].size(); ++i) {
     if (used[u][i]) {
@@ -138,7 +126,6 @@ void dfs(int u) {
     ans.push_back(s);
   }
 }
-
 bool solve() {
   int cnt = 1;
   for (int i = 0; i != n; ++i) {
@@ -178,7 +165,6 @@ bool solve() {
   dfs((pin ? st : root));
   return true;
 }
-
 int main() {
   int t;
   cin >> t;

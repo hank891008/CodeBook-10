@@ -3,7 +3,6 @@ vector<int> tin(MAXN), tout(MAXN), depth(MAXN);
 int par[MAXN][LOG];
 int timer = 0;
 vector<int> G[MAXN];
-
 void dfs(int u, int f) {
   tin[u] = ++timer;
   par[u][0] = f;
@@ -15,7 +14,6 @@ void dfs(int u, int f) {
   }
   tout[u] = ++timer;
 }
-
 void Doubling(int n) {
   for (int j = 1; j < LOG; ++j) {
     for (int i = 1; i <= n; ++i) {
@@ -23,9 +21,7 @@ void Doubling(int n) {
     }
   }
 }
-
 bool anc(int u, int v) { return tin[u] <= tin[v] && tout[v] <= tout[u]; }
-
 int LCA(int u, int v) {
   if (depth[u] > depth[v]) {
     swap(u, v);
@@ -38,7 +34,6 @@ int LCA(int u, int v) {
   }
   return par[u][0];
 }
-
 int dis(int u, int v) {
   int lca = LCA(u, v);
   return depth[u] + depth[v] - 2 * depth[lca];

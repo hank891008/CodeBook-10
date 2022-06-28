@@ -36,12 +36,10 @@ struct MCMF {     // inq times
     }
     queue<int> q;
     bool negcycle = false;
-
     dis[st] = 0;
     cnt[st] = 1;
     inq[st] = true;
     q.push(st);
-
     while (!q.empty() && !negcycle) {
       int u = q.front();
       q.pop();
@@ -50,7 +48,6 @@ struct MCMF {     // inq times
         int v = edges[i].v;
         LL cost = edges[i].cost;
         LL cap = edges[i].cap;
-
         if (dis[v] > dis[u] + cost && cap > 0) {
           dis[v] = dis[u] + cost;
           pre[v] = i;
@@ -58,7 +55,6 @@ struct MCMF {     // inq times
             q.push(v);
             cnt[v]++;
             inq[v] = true;
-
             if (cnt[v] == n + 2) {
               negcycle = true;
               break;
@@ -67,7 +63,6 @@ struct MCMF {     // inq times
         }
       }
     }
-
     return dis[ed] != INF;
   }
   LL sendFlow(int v, LL curFlow) {
@@ -77,9 +72,7 @@ struct MCMF {     // inq times
     int i = pre[v];
     int u = edges[i].u;
     LL cost = edges[i].cost;
-  
     LL f = sendFlow(u, min(curFlow, edges[i].cap));
-
     ans_cost += f * cost;
     edges[i].cap -= f;
     edges[i ^ 1].cap += f;
